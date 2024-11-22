@@ -1,0 +1,11 @@
+{
+    "name": "framework/framework",
+    "type": "project",
+    "description": "php framework",
+    "keywords": [],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}

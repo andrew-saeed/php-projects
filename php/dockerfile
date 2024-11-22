@@ -1,0 +1,29 @@
+FROM php:8.4-fpm
+
+COPY ./php/config/php.ini /usr/local/etc/php/
+COPY ./php/config/composer.sh /usr/local/bin/composer-installer
+
+RUN apt-get -yqq update \
+    && apt-get -yqq install --no-install-recommends zip unzip \
+    && chmod +x  /usr/local/bin/composer-installer \
+    && composer-installer \
+    && mv composer.phar /usr/local/bin/composer \
+    && chmod +x /usr/local/bin/composer \
+    && composer --version
+
+WORKDIR /tmp
+COPY ./php/framework/composer.json /tmp
+RUN composer install \
+    --no-interaction \
+    --no-plugins \
+    --no-scripts \
+    --prefer-dist \
+    && rm -rf composer.json composer.lock vendor/
+
+WORKDIR /var/www/html
+COPY ./php/framework /var/www/html
+RUN composer install \
+    --no-interaction \
+    --no-plugins \
+    --no-scripts \
+    --prefer-dist
