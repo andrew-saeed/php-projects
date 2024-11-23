@@ -9,6 +9,7 @@
         }
     },
     "require": {
-        "spatie/ignition": "^1.15"
+        "spatie/ignition": "^1.15",
+        "league/container": "^4.2"
     }
 }
