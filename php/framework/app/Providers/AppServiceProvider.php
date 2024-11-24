@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Core\Config;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
 use Spatie\Ignition\Ignition;
@@ -10,7 +11,9 @@ class AppServiceProvider extends AbstractServiceProvider implements BootableServ
 
     public function boot(): void
     {
-        Ignition::make()->setTheme('dark')->register();
+        if($this->container->get(Config::class)->get('app.debug')) {
+            Ignition::make()->setTheme('dark')->register();
+        }
     }
 
     public function register(): void

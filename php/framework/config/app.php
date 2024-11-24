@@ -3,7 +3,8 @@
 use App\Providers\AppServiceProvider;
 
 return [
-    'name' => 'framework-x',
+    'name' => env('AppName'),
+    'debug' => env('Debug'),
     'providers' => [
         AppServiceProvider::class,
     ]
