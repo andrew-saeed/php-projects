@@ -14,9 +14,12 @@ use League\Container\ReflectionContainer;
 
 $container = Container::getInstance();
 $container->delegate(new ReflectionContainer());
-$container->addServiceProvider(new AppServiceProvider());
 $container->addServiceProvider(new ConfigServiceProvider());
-var_dump($container->get(Config::class)->get('config.app.name', 'default framework'));
+$config = $container->get(Config::class);
+$providers = $config->get('app.providers', []);
+foreach($providers as $provider) {
+    $container->addServiceProvider(new $provider);
+}
 
 $app = new App();
 $app->run();
