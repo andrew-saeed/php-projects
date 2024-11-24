@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Core\Example;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
 use Spatie\Ignition\Ignition;
