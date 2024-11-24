@@ -10,6 +10,7 @@
     },
     "require": {
         "spatie/ignition": "^1.15",
-        "league/container": "^4.2"
+        "league/container": "^4.2",
+        "adbario/php-dot-notation": "^3.3"
     }
 }

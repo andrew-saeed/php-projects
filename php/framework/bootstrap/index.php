@@ -2,9 +2,11 @@
 require '../vendor/autoload.php';
 
 use App\Core\App;
+use App\Core\Config;
 use App\Core\Container;
 use App\Core\Example;
 use App\Providers\AppServiceProvider;
+use App\Providers\ConfigServiceProvider;
 
 use League\Container\ReflectionContainer;
 
@@ -13,7 +15,8 @@ use League\Container\ReflectionContainer;
 $container = Container::getInstance();
 $container->delegate(new ReflectionContainer());
 $container->addServiceProvider(new AppServiceProvider());
-var_dump(Container::getInstance()->get(Example::class));
+$container->addServiceProvider(new ConfigServiceProvider());
+var_dump($container->get(Config::class)->get('config.app.name', 'default framework'));
 
 $app = new App();
 $app->run();
