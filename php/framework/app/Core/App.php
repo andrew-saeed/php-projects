@@ -2,10 +2,41 @@
 
 namespace App\Core;
 
+use Laminas\Diactoros\Request;
+use Laminas\Diactoros\Response;
+use League\Route\Router;
+use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
+
 class App {
 
-    public function run() {
+    protected Router $router;
+    protected ServerRequestInterface $request;
 
-        var_dump('app is running');
+    public function __construct(protected ContainerInterface $container) {
+
+        $this->router = $this->container->get(Router::class);
+        $this->request = $this->container->get(Request::class);
+    }
+
+    public function getRouter(): Router {
+
+        return $this->router;
+    }
+
+    public function run():void {
+
+        $response = new Response();
+
+        try {
+            
+            $response = $this->router->dispatch($this->request);
+        } catch(\Throwable $e) {
+
+            throw $e;
+        }
+        
+        (new SapiEmitter())->emit($response);
     }
 }

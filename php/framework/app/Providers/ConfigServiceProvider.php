@@ -16,11 +16,10 @@ class ConfigServiceProvider extends AbstractServiceProvider implements BootableS
     public function register(): void
     {
         $this->getContainer()->add(Config::class, function() {
-
             $config = new Config();
 
             return $this->mergeConfigFromFiles($config);
-        });
+        })->setShared(true);
     }
 
     protected function mergeConfigFromFiles(Config $config) {
