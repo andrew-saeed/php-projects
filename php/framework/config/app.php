@@ -4,6 +4,7 @@ use App\Providers\AppServiceProvider;
 use App\Providers\RequestServiceProvider;
 use App\Providers\RouterServiceProvider;
 use App\Providers\ViewServiceProvider;
+use App\Providers\DatabaseServiceProvider;
 
 return [
     'name' => env('AppName'),
@@ -12,6 +13,7 @@ return [
         AppServiceProvider::class,
         RequestServiceProvider::class,
         RouterServiceProvider::class,
-        ViewServiceProvider::class
+        ViewServiceProvider::class,
+        DatabaseServiceProvider::class
     ]
 ];

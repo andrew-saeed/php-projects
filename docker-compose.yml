@@ -1,5 +1,7 @@
 services:
   nginx:
+    depends_on:
+      - php
     build:
       context: .
       dockerfile: ./nginx/dockerfile
@@ -11,7 +13,6 @@ services:
       - internal
   php:
     depends_on:
-      - nginx
       - mysql
     build: 
       context: .
@@ -22,6 +23,7 @@ services:
       - internal
   mysql:
     image: mysql
+    container_name: mysql
     volumes:
       - mysql:/var/lib/mysql
     ports:
@@ -31,6 +33,8 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: framework
       MYSQL_PASSWORD: framework
+    networks:
+      - internal
 volumes:
   mysql:
     driver: local

@@ -4,6 +4,8 @@ COPY ./php/config/php.ini /usr/local/etc/php/
 COPY ./php/config/composer.sh /usr/local/bin/composer-installer
 
 RUN apt-get -yqq update \
+    && docker-php-ext-install mysqli pdo pdo_mysql \
+    && docker-php-ext-enable pdo_mysql \
     && apt-get -yqq install --no-install-recommends zip unzip \
     && chmod +x  /usr/local/bin/composer-installer \
     && composer-installer \
