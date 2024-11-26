@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if block('title') is defined %}{{ block('title') }}{% endif %}</title>
+</head>
+<body>
+    <nav>
+        {% include 'layouts/partials/nav.twig' %}
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+        <h2>{{ name }}</h2>
+    </main>
+</body>
+</html>
