@@ -6,22 +6,23 @@ use App\Core\Config;
 use App\Views\View;
 use App\Models\User;
 use Laminas\Diactoros\Response;
+use Psr\Http\Message\ServerRequestInterface;
 
-class HomeController {
+class UserController {
 
     public function __construct(protected Config $config, protected View $view)
     {
         
     }
 
-    public function __invoke()
+    public function __invoke(ServerRequestInterface $request, array $arguments)
     {
+        ['user' => $userId] = $arguments;
+        $user = User::findOrFail($userId);
+
         $response = new Response();
         $response->getBody()->write(
-            $this->view->render('home.twig', [
-                'name' => $this->config->get('app.name'),
-                'users' => User::get()
-            ])
+            $this->view->render('user.twig', ['user' => $user])
         );
         return $response;
     }

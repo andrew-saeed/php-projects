@@ -5,22 +5,20 @@ services:
     build:
       context: .
       dockerfile: ./nginx/dockerfile
+    container_name: nginx
     volumes:
       - ./php/framework:/var/www/html
     ports:
       - '8080:80'
-    networks:
-      - internal
   php:
     depends_on:
       - mysql
     build: 
       context: .
       dockerfile: ./php/dockerfile
+    container_name: frameworkx
     volumes:
       - ./php/framework:/var/www/html
-    networks:
-      - internal
   mysql:
     image: mysql
     container_name: mysql
@@ -33,11 +31,6 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: framework
       MYSQL_PASSWORD: framework
-    networks:
-      - internal
 volumes:
   mysql:
     driver: local
-networks:
-  internal:
-    driver: bridge
