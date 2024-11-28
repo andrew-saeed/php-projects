@@ -1,4 +1,4 @@
-FROM php:8.4-fpm
+FROM php:8.2-fpm
 
 COPY ./php/config/php.ini /usr/local/etc/php/
 COPY ./php/config/composer.sh /usr/local/bin/composer-installer
