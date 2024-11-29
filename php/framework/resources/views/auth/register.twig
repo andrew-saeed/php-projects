@@ -1,0 +1,22 @@
+{% extends 'layouts/base.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<h1>Sign up</h1>
+<form action="/signup" method="POST">
+    <div>
+        <label for="first_name">user name</label>
+        <input type="text" name="first_name" />
+    </div>
+    <div>
+        <label for="email">email</label>
+        <input type="text" name="email" />
+    </div>
+    <div>
+        <label for="password">password</label>
+        <input type="text" name="password" />
+    </div>
+    <button type="submit">register</button>
+</form>
+{% endblock %}
