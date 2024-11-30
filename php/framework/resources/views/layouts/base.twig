@@ -11,7 +11,7 @@
     </nav>
     <main>
         {% block content %}{% endblock %}
-        <h2>{{ name }}</h2>
+        <h2>{{ config().get('app.name') }}</h2>
     </main>
 </body>
 </html>

@@ -19,7 +19,6 @@ class HomeController {
         $response = new Response();
         $response->getBody()->write(
             $this->view->render('home.twig', [
-                'name' => $this->config->get('app.name'),
                 'users' => User::get()
             ])
         );
