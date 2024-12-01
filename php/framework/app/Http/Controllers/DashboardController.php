@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Core\Config;
 use App\Views\View;
+use Cartalyst\Sentinel\Sentinel;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ServerRequestInterface;
 
