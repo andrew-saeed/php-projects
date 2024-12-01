@@ -33,4 +33,11 @@ class LoginController {
 
         return new Response\RedirectResponse('/dashboard');
     }
+
+    public function destroy()
+    {
+        $this->auth->logout();
+
+        return new Response\RedirectResponse('/');
+    }
 }

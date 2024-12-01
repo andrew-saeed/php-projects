@@ -4,6 +4,9 @@
     {% if auth().check() %}
         <li><a href="/dashboard">dashboard</a></li>
         <li>welcome {{ auth().user().first_name }}</li>
+        <form action="/signout" method="POST">
+            <button type="submit">logout</button>
+        </form>
     {% endif %}
 
     {% if not auth().check() %}

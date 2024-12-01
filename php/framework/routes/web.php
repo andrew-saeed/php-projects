@@ -16,4 +16,5 @@ return static function(Router $router) {
     $router->post('/signup', [RegisterationController::class, 'store']);
     $router->get('/signin', [LoginController::class, 'index']);
     $router->post('/signin', [LoginController::class, 'store']);
+    $router->post('/signout', [LoginController::class, 'destroy']);
 };
