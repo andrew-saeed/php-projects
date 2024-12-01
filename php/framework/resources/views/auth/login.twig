@@ -1,14 +1,10 @@
 {% extends 'layouts/base.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block content %}
 <h1>Sign up</h1>
-<form action="/signup" method="POST">
-    <div>
-        <label for="first_name">user name</label>
-        <input type="text" name="first_name" />
-    </div>
+<form action="/signin" method="POST">
     <div>
         <label for="email">email</label>
         <input type="text" name="email" />
@@ -17,6 +13,6 @@
         <label for="password">password</label>
         <input type="password" name="password" />
     </div>
-    <button type="submit">register</button>
+    <button type="submit">login</button>
 </form>
 {% endblock %}

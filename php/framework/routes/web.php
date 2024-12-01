@@ -1,5 +1,6 @@
 <?
 
+use App\Http\Controllers\Auth\LoginController;
 use League\Route\Router;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterationController;
@@ -13,4 +14,6 @@ return static function(Router $router) {
     $router->get('/dashboard', DashboardController::class);
     $router->get('/signup', [RegisterationController::class, 'index']);
     $router->post('/signup', [RegisterationController::class, 'store']);
+    $router->get('/signin', [LoginController::class, 'index']);
+    $router->post('/signin', [LoginController::class, 'store']);
 };
