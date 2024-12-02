@@ -3,10 +3,17 @@
 {% block title %}Welcome{% endblock %}
 
 {% block content %}
-<h1>Home Page</h1>
-<ul>
-    {% for user in users %}
-        <li><a href="/users/{{ user.id }}">{{ user.first_name }}</a></li>
-    {% endfor %}
-</ul>
+
+    <h1>Home Page</h1>
+
+    <ul>
+        {% for user in users %}
+            <li><a href="/users/{{ user.id }}">{{ user.first_name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    {% if message is defined %}
+        {{ message }}
+    {% endif %}
+
 {% endblock %}

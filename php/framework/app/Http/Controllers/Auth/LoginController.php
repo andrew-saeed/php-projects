@@ -7,13 +7,16 @@ use App\Views\View;
 use Cartalyst\Sentinel\Sentinel;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class LoginController {
 
     public function __construct(
         protected Config $config, 
         protected View $view,
-        protected Sentinel $auth) {}
+        protected Sentinel $auth,
+        protected Session $session
+    ) {}
 
     public function index()
     {   
@@ -31,12 +34,16 @@ class LoginController {
             return new Response\RedirectResponse('/signin');
         }
 
+        $this->session->getFlashBag()->add('message', 'welcome back');
+
         return new Response\RedirectResponse('/dashboard');
     }
 
     public function destroy()
     {
         $this->auth->logout();
+
+        $this->session->getFlashBag()->add('message', 'goodbye');
 
         return new Response\RedirectResponse('/');
     }

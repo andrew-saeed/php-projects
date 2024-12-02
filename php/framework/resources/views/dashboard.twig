@@ -3,5 +3,8 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<h1>dashboard</h1>
+    <h1>dashboard</h1>
+    {% if message is defined %}
+        <p>{{ message }}</p>
+    {% endif %}
 {% endblock %}
