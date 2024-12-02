@@ -35,7 +35,7 @@ class RegisterationController {
     {
         try {
             v::key('first_name', v::alpha()->notEmpty())
-                ->key('email', v::email()->notEmpty())
+                ->key('email', v::email()->notEmpty()->not(v::existsInDatabase('users', 'email')))
                 ->key('password', v::notEmpty())
                 ->assert($request->getParsedBody());
         } catch(ValidationException $e) {
