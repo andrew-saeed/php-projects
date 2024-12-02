@@ -26,6 +26,6 @@ foreach($providers as $provider) {
 
 $app = new App($container);
 
-(require('../routes/web.php'))($app->getRouter());
+(require('../routes/web.php'))($app->getRouter(), $container);
 
 $app->run();

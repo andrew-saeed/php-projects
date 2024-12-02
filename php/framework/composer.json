@@ -20,6 +20,7 @@
         "illuminate/database": "^11.36.1",
         "cartalyst/sentinel": "^8.0",
         "illuminate/events": "^11.37",
-        "symfony/http-foundation": "^7.2"
+        "symfony/http-foundation": "^7.2",
+        "slim/csrf": "^1.5"
     }
 }

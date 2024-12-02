@@ -5,6 +5,7 @@
 {% block content %}
 <h1>Sign up</h1>
 <form action="/signin" method="POST">
+    {{ csrf() | raw }}
     <div>
         <label for="email">email</label>
         <input type="text" name="email" />

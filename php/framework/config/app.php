@@ -6,6 +6,7 @@ use App\Providers\RouterServiceProvider;
 use App\Providers\ViewServiceProvider;
 use App\Providers\DatabaseServiceProvider;
 use App\Providers\AuthServiceProvider;
+use App\Providers\CsrfServiceProvider;
 
 return [
     'name' => env('AppName'),
@@ -16,6 +17,7 @@ return [
         RouterServiceProvider::class,
         ViewServiceProvider::class,
         DatabaseServiceProvider::class,
-        AuthServiceProvider::class
+        AuthServiceProvider::class,
+        CsrfServiceProvider::class
     ]
 ];
