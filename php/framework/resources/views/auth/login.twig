@@ -9,10 +9,16 @@
     <div>
         <label for="email">email</label>
         <input type="text" name="email" />
+        {% if errors.email %}
+            {{ errors.email }}
+        {% endif %}
     </div>
     <div>
         <label for="password">password</label>
         <input type="password" name="password" />
+        {% if errors.password %}
+            {{ errors.password }}
+        {% endif %}
     </div>
     <button type="submit">login</button>
 </form>

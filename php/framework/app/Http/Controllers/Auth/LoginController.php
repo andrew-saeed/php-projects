@@ -7,7 +7,9 @@ use App\Views\View;
 use Cartalyst\Sentinel\Sentinel;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ServerRequestInterface;
+use Respect\Validation\Exceptions\ValidationException;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Respect\Validation\Validator as v;
 
 class LoginController {
 
@@ -22,13 +24,24 @@ class LoginController {
     {   
         $response = new Response();
         $response->getBody()->write(
-            $this->view->render('auth/login.twig')
+            $this->view->render('auth/login.twig', [
+                'errors' => $this->session->getFlashBag()->get('errors')[0] ?? null
+            ])
         );
         return $response;
     }
 
     public function store(ServerRequestInterface $request)
     {
+        try {
+            v::key('email', v::email()->notEmpty())
+                ->key('password', v::notEmpty())
+                ->assert($request->getParsedBody());
+        } catch(ValidationException $e) {
+            $this->session->getFlashBag()->add('errors', $e->getMessages());
+            return new Response\RedirectResponse('/signin');
+        }
+
         if(!$this->auth->authenticate($request->getParsedBody())) {
             
             return new Response\RedirectResponse('/signin');

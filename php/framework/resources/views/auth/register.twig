@@ -9,14 +9,23 @@
     <div>
         <label for="first_name">user name</label>
         <input type="text" name="first_name" />
+        {% if errors.first_name %}
+            {{ errors.first_name }}
+        {% endif %}
     </div>
     <div>
         <label for="email">email</label>
         <input type="text" name="email" />
+        {% if errors.email %}
+            {{ errors.email }}
+        {% endif %}
     </div>
     <div>
         <label for="password">password</label>
         <input type="password" name="password" />
+        {% if errors.password %}
+            {{ errors.password }}
+        {% endif %}
     </div>
     <button type="submit">register</button>
 </form>
