@@ -5,6 +5,7 @@ namespace App\Views;
 use App\Core\Config;
 use Cartalyst\Sentinel\Sentinel;
 use Psr\Container\ContainerInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Twig\Extension\AbstractExtension;
 
 class TwigRuntimeExtension extends AbstractExtension
@@ -29,5 +30,10 @@ class TwigRuntimeExtension extends AbstractExtension
             <input type="hidden" name="' . $guard->getTokenNameKey() . '" value="' . $guard->getTokenName() . '">
             <input type="hidden" name="' . $guard->getTokenValueKey() . '" value="' . $guard->getTokenValue() . '">
         ';
+    }
+
+    public function session()
+    {
+        return $this->container->get(Session::class);
     }
 }
