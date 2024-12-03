@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use App\Exceptions\ExceptionHandler;
 use Laminas\Diactoros\Request;
 use Laminas\Diactoros\Response;
 use League\Route\Router;
@@ -34,7 +35,7 @@ class App {
             $response = $this->router->dispatch($this->request);
         } catch(\Throwable $e) {
 
-            throw $e;
+            $response = $this->container->get(ExceptionHandler::class)->handle($this->request, $response, $e);
         }
         
         (new SapiEmitter())->emit($response);

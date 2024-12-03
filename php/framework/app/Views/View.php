@@ -11,6 +11,11 @@ class View {
         
     }
 
+    public function exists(string $view)
+    {
+        return $this->twig->getLoader()->exists($view);
+    }
+
     public function render(string $view, array $data = [])
     {
         return $this->twig->render($view, $data);
