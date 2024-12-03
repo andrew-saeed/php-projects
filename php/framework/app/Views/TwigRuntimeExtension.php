@@ -36,4 +36,9 @@ class TwigRuntimeExtension extends AbstractExtension
     {
         return $this->container->get(Session::class);
     }
+
+    public function old(string $key) 
+    {
+        return $this->session()->getFlashBag()->peek('old')[$key] ?? null;
+    }
 }
