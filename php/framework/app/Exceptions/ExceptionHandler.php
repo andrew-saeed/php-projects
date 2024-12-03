@@ -19,7 +19,7 @@ class ExceptionHandler {
             $response->getBody()->write($view);
             return $response;
         }
-        
+
         throw $e;
     }
 
