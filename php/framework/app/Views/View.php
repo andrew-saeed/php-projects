@@ -20,4 +20,8 @@ class View {
     {
         return $this->twig->render($view, $data);
     }
+
+    public function make(string $view, array $data = []) {
+        return $this->render($view, $data);
+    }
 }

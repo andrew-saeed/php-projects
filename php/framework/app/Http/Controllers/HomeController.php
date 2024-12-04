@@ -19,7 +19,7 @@ class HomeController {
         $response = new Response();
         $response->getBody()->write(
             $this->view->render('home.twig', [
-                'users' => User::get()
+                'users' => User::paginate(1)
             ])
         );
         return $response;
