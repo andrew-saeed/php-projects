@@ -14,7 +14,7 @@ RUN apt-get -yqq update \
     && composer --version
 
 WORKDIR /tmp
-COPY ./php/framework/composer.json /tmp
+COPY ./php/frameworkx/composer.json /tmp
 RUN composer install \
     --no-interaction \
     --no-plugins \
@@ -23,7 +23,7 @@ RUN composer install \
     && rm -rf composer.json composer.lock vendor/
 
 WORKDIR /var/www/html
-COPY ./php/framework /var/www/html
+COPY ./php/frameworkx /var/www/html
 RUN composer install \
     --no-interaction \
     --no-plugins \

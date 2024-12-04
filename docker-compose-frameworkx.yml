@@ -1,0 +1,36 @@
+services:
+  frameworkx-nginx:
+    depends_on:
+      - frameworkx-php
+    build:
+      context: .
+      dockerfile: ./nginx/frameworkx/dockerfile
+    container_name: frameworkx-nginx
+    volumes:
+      - ./php/frameworkx:/var/www/html
+    ports:
+      - '8080:80'
+  frameworkx-php:
+    depends_on:
+      - frameworkx-mysql
+    build: 
+      context: .
+      dockerfile: ./php/frameworkx/dockerfile
+    container_name: frameworkx-php
+    volumes:
+      - ./php/frameworkx:/var/www/html
+  frameworkx-mysql:
+    image: mysql
+    container_name: frameworkx-mysql
+    volumes:
+      - mysql:/var/lib/mysql
+    ports:
+      - '13306:3306'
+    environment:
+      MYSQL_DATABASE: frameworkx
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: frameworkx
+      MYSQL_PASSWORD: frameworkx
+volumes:
+  mysql:
+    driver: local
