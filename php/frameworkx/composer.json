@@ -23,6 +23,7 @@
         "symfony/http-foundation": "^7.2",
         "slim/csrf": "^1.5",
         "respect/validation": "^2.4",
-        "illuminate/pagination": "^11.37"
+        "illuminate/pagination": "^11.37",
+        "robmorgan/phinx": "^0.16.6"
     }
 }
