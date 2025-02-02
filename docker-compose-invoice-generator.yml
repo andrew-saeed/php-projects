@@ -1,0 +1,36 @@
+services:
+  invoice-generator-nginx:
+    depends_on:
+      - invoice-generator-php
+    build:
+      context: .
+      dockerfile: ./nginx/invoice-generator/dockerfile
+    container_name: invoice-generator-nginx
+    volumes:
+      - ./php/invoice-generator:/var/www/html
+    ports:
+      - '8080:80'
+  invoice-generator-php:
+    depends_on:
+      - invoice-generator-mysql
+    build: 
+      context: .
+      dockerfile: ./php/invoice-generator/dockerfile
+    container_name: invoice-generator-php
+    volumes:
+      - ./php/invoice-generator:/var/www/html
+  invoice-generator-mysql:
+    image: mysql
+    container_name: invoice-generator-mysql
+    volumes:
+      - invoice-generator-mysql:/var/lib/mysql
+    ports:
+      - '13306:3306'
+    environment:
+      MYSQL_DATABASE: invoice-generator
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: invoice-generator
+      MYSQL_PASSWORD: invoice-generator
+volumes:
+  invoice-generator-mysql:
+    driver: local

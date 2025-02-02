@@ -1,0 +1,26 @@
+{
+  "name": "invoice-generator-frontend",
+  "version": "0.0.1",
+  "description": "invoice generator frontend app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "vite"
+  ],
+  "author": "Andrew Saeed",
+  "license": "MIT",
+  "devDependencies": {
+    "@vituum/vite-plugin-twig": "^1.1.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "postcss-import": "^16.1.0",
+    "sass": "^1.83.4",
+    "vite": "^6.0.11",
+    "vituum": "^1.1.1"
+  }
+}
