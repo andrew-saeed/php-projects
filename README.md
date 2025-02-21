@@ -1,6 +1,2 @@
-# ⚙️ PHP Projects
-- HTML
-- CSS
-- JavaScript
-- PHP
-- SQL
+# PHP Projects
+Hey! I'm learning PHP ✨
